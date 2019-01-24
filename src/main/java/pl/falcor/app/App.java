@@ -1,13 +1,14 @@
 package pl.falcor.app;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
+public class App {
+
+    public static void main(String[] args) throws FileNotFoundException {
+
+        FileLoader fileLoader = new FileLoader("/home/tomasz/Exercise/file.txt");
+        InputStream is = fileLoader.loadFile();
+
     }
 }
