@@ -1,14 +1,14 @@
 package pl.falcor.app;
 
-import java.io.FileInputStream;
+import java.io.BufferedInputStream;
 
 class ExtensionChecker {
 
-    private final FileInputStream fileInputStream;
+    private final BufferedInputStream fileInputStream;
     private final BinaryExtensionChecker binaryExtensionChecker = new BinaryExtensionChecker();
     private final TextExtensionChecker textExtensionChecker = new TextExtensionChecker();
 
-    ExtensionChecker(FileInputStream fileInputStream) {
+    ExtensionChecker(BufferedInputStream fileInputStream) {
         this.fileInputStream = fileInputStream;
     }
 

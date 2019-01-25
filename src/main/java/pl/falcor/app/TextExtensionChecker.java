@@ -1,11 +1,11 @@
 package pl.falcor.app;
 
-import java.io.FileInputStream;
+import java.io.BufferedInputStream;
 import java.io.IOException;
 
 class TextExtensionChecker {
 
-    Extension validate(FileInputStream fileInputStream) {
+    Extension validate(BufferedInputStream fileInputStream) {
         boolean isText = true;
         byte[] bytes = new byte[25];
         try {
@@ -14,6 +14,7 @@ class TextExtensionChecker {
             e.printStackTrace();
         }
         for (byte b : bytes) {
+            System.out.println(b);
             if (b < 0) isText = false;
         }
         return isText ? Extension.TXT : Extension.UNKNOWN;

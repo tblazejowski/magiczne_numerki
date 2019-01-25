@@ -1,20 +1,21 @@
 package pl.falcor.app;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 class FileLoader {
 
-    private FileInputStream fileInputStream;
+    private BufferedInputStream fileInputStream;
     private final String filePath;
 
     FileLoader(String path) {
         this.filePath = path;
     }
 
-    FileInputStream loadFile() throws FileNotFoundException {
-        this.fileInputStream = new FileInputStream(this.filePath);
+    BufferedInputStream loadFile() throws FileNotFoundException {
+        this.fileInputStream = new BufferedInputStream(new FileInputStream(this.filePath));
         return this.fileInputStream;
     }
 
