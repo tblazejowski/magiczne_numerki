@@ -1,34 +1,21 @@
 package pl.falcor.app;
 
-import java.io.BufferedInputStream;
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.URLConnection;
 
-public class ExtensionChecker {
+class ExtensionChecker {
 
     private final FileInputStream fileInputStream;
+    private final BinaryExtensionChecker binaryExtensionChecker = new BinaryExtensionChecker();
+    private final TextExtensionChecker textExtensionChecker = new TextExtensionChecker();
 
-    public ExtensionChecker(FileInputStream fileInputStream) {
+    ExtensionChecker(FileInputStream fileInputStream) {
         this.fileInputStream = fileInputStream;
     }
 
-    String verify() {
-        String extension = null;
-        try {
-            extension = URLConnection.guessContentTypeFromStream(new BufferedInputStream(fileInputStream));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if (extension == null) {
-            determineContent();
-        }
-
-        return extension;
+    Extension verify() {
+        Extension result = binaryExtensionChecker.validate(fileInputStream);
+        return result.equals(Extension.UNKNOWN) ? textExtensionChecker.validate(fileInputStream) : result;
     }
 
-    private void determineContent() {
 
-    }
 }
