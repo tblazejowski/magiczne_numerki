@@ -2,7 +2,10 @@ package pl.falcor.app;
 
 enum Extension {
 
-    JPEG("image/jpeg"), GIF("image/gif"), TXT("txt"), UNKNOWN("unknown");
+    JPEG("image/jpeg"), JPG("image/jpeg"),
+    GIF("image/gif"),
+    TXT("txt"),
+    UNKNOWN("unknown");
 
     private final String content;
 

@@ -14,8 +14,7 @@ class TextExtensionChecker {
             e.printStackTrace();
         }
         for (byte b : bytes) {
-            System.out.println(b);
-            if (b < 0) isText = false;
+            if (!Character.isLetterOrDigit((char) b) && b < 0) isText = false;
         }
         return isText ? Extension.TXT : Extension.UNKNOWN;
     }

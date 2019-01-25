@@ -6,8 +6,13 @@ public class App {
 
     public static void main(String[] args) throws IOException {
 
-        FileLoader fileLoader = new FileLoader("/home/tomasz/Pobrane/test.txt");
+        if (args.length == 0) {
+            System.err.println("Nie podano ścieżki pliku.");
+            return;
+        }
+        FileLoader fileLoader = new FileLoader(args[0]);
         ExtensionChecker extensionChecker = new ExtensionChecker(fileLoader.loadFile());
-        System.out.println(extensionChecker.verify());
+        InspectionResult inspectionResult = new InspectionResult(extensionChecker.verify(), fileLoader.getExtension());
+        System.out.println(inspectionResult.toString());
     }
 }

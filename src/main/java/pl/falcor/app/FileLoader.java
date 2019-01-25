@@ -22,4 +22,12 @@ class FileLoader {
     void close() throws IOException {
         this.fileInputStream.close();
     }
+
+    Extension getExtension() {
+        try {
+            return Extension.valueOf(filePath.substring(filePath.lastIndexOf('.') + 1).toUpperCase());
+        } catch (Exception exception) {
+            return Extension.UNKNOWN;
+        }
+    }
 }
