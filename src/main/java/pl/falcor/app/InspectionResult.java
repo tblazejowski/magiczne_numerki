@@ -13,6 +13,6 @@ class InspectionResult {
 
     @Override
     public String toString() {
-        return String.format("Prawdziwe rozszerzenie zbadanego pliku to: %s rozszerenie nazwy pliku to: %s", realExtension, fileNameExtension);
+        return String.format("Rozszerzenie w nazwie podanego pliku to %s, wynikające z inspekcji rozszerzenie pliku to: %s%n", fileNameExtension, realExtension);
     }
 }

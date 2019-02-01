@@ -7,9 +7,16 @@ enum Extension {
     TXT("txt"),
     UNKNOWN("unknown");
 
-    private final String content;
+    private final String contentType;
 
-    Extension(String content) {
-        this.content = content;
+    Extension(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public static Extension parseGuessedContentType(String contentType) {
+        for (Extension extension : Extension.values()) {
+            if (extension.contentType.equals(contentType)) return extension;
+        }
+        return Extension.UNKNOWN;
     }
 }

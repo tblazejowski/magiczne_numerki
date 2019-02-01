@@ -13,6 +13,6 @@ class BinaryExtensionChecker {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return ExtensionParser.parse(extension);
+        return Extension.parseGuessedContentType(extension);
     }
 }
