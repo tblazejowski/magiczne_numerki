@@ -1,4 +1,4 @@
-package pl.falcor.app;
+package pl.falcor.magiczne_numerki;
 
 class InspectionResult {
 

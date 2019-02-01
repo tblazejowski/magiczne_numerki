@@ -1,8 +1,8 @@
-package pl.falcor.app;
+package pl.falcor.magiczne_numerki;
 
 enum Extension {
 
-    JPEG("image/jpeg"),
+    JPEG("image/jpeg"), JPG("image/jpg"),
     GIF("image/gif"),
     TXT("txt"),
     UNKNOWN("unknown");

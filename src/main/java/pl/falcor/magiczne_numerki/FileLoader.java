@@ -1,4 +1,4 @@
-package pl.falcor.app;
+package pl.falcor.magiczne_numerki;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;

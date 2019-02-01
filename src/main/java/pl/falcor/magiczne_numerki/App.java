@@ -1,4 +1,4 @@
-package pl.falcor.app;
+package pl.falcor.magiczne_numerki;
 
 import java.io.IOException;
 
@@ -11,8 +11,8 @@ public class App {
             return;
         }
         FileLoader fileLoader = new FileLoader(args[0]);
-        ExtensionChecker extensionChecker = new ExtensionChecker(fileLoader.loadFile());
-        InspectionResult inspectionResult = new InspectionResult(extensionChecker.verify(), fileLoader.getExtension());
+        InspectionResult inspectionResult =
+                new InspectionResult(new ExtensionChecker(fileLoader.loadFile()).verify(), fileLoader.getExtension());
         System.out.println(inspectionResult.toString());
     }
 }
