@@ -1,38 +1,49 @@
 package pl.falcor.app;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Assert;
+import org.junit.Test;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+import java.io.FileNotFoundException;
+
+public class AppTest {
+
+    @Test
+    public void shouldConfirmTextFileIsATextFile() throws FileNotFoundException {
+        FileLoader fileLoader = new FileLoader("src/test/resources/testTXT.txt");
+        ExtensionChecker extensionChecker = new ExtensionChecker(fileLoader.loadFile());
+
+        Extension verifiedExtension = extensionChecker.verify();
+
+        Assert.assertEquals(Extension.TXT, verifiedExtension);
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+    @Test
+    public void shouldConfirmGIFTypeFileIsAGIFFile() throws FileNotFoundException {
+        FileLoader fileLoader = new FileLoader("src/test/resources/testGIF.gif");
+        ExtensionChecker extensionChecker = new ExtensionChecker(fileLoader.loadFile());
+
+        Extension verifiedExtension = extensionChecker.verify();
+
+        Assert.assertEquals(Extension.GIF, verifiedExtension);
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void shouldConfirmJPGTypeFileWithIncorrectTXTExtensionIsInFactJPEGFile() throws FileNotFoundException {
+        FileLoader fileLoader = new FileLoader("src/test/resources/testJPEG.txt");
+        ExtensionChecker extensionChecker = new ExtensionChecker(fileLoader.loadFile());
+
+        Extension verifiedExtension = extensionChecker.verify();
+
+        Assert.assertEquals(Extension.JPEG, verifiedExtension);
+    }
+
+    @Test
+    public void shouldConfirmEmptyFileIsATextFile() throws FileNotFoundException {
+        FileLoader fileLoader = new FileLoader("src/test/resources/testEmpty.txt");
+        ExtensionChecker extensionChecker = new ExtensionChecker(fileLoader.loadFile());
+
+        Extension verifiedExtension = extensionChecker.verify();
+
+        Assert.assertEquals(Extension.TXT, verifiedExtension);
     }
 }
